@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Random Number generate game</title>
+<style>
+
+h2{
+   color: #F705A3 ; 
+   text-align:center;
+   font-size:200%;
+   text-decoration:underline;
+   }
+
+#a{
+      background-color:#B991D5;
+	  width:120px;
+	  height:120px;
+	  border:5px black solid;
+	  border-radius:30px;	  
+	  font-size:300%;
+	  text-align:center;
+	  position:relative;
+	  left:380px;
+	  } 
+
+#b1 {
+      background-color:#B991D5;
+	  width:120px;
+	  height:120px;
+	  border:5px black solid;
+	  border-radius:30px;
+	  font-size:200%;
+	  text-align:center;
+	  float:left;
+	  position:relative;
+	  left:720px;
+    }	
+
+#b2 { 
+      background-color: #F35924;
+	  width:400px;
+	  height:100px;
+	  border:5px black solid;
+	  border-radius:50px;
+	  font-size:500%;
+	  text-align:center;
+	  margin:30px 0px 0px 0px;
+	  position:relative;
+	  left:470px;
+    }
+
+#b3{
+      clear:left;
+      background-color:#000808 ;
+	  width:150px;
+	  height:50px;
+	  color:white;
+	  border:3px black  solid;
+	  border-radius:20px;
+	  font-size:300%;
+	  text-align:center;
+	  margin:20px 0px 0px 0px;
+	  position:relative;
+	  left:600px;
+	}
+
+#f{
+   text-align:center;
+   color:#00010A;
+   font-weight:bold;
+   font-size:200%; 
+   }	
+
+.set{
+     height:50px;
+	 width:150px;
+	 border:3px #2E316A solid;
+	 margin:30px 20px;
+	 position:relative;
+	 left:380px;
+	 border-radius:50px;
+	 }		
+
+
+</style>
+</head>
+
+<body style="background-color:#75756F">
+
+<h2><b>guest number game</b></h2>
+
+<input type="number" min="0" max="100" id="a">
+<div id="b1"></div>
+<div id="b3"></div>
+<div id="b2"></div>
+<p id="f"></p>
+
+<button id="c" class="set">Guest</button>
+<button id="d" class="set">Clue</button>
+<button id="e" class="set">Best Mark</button>
+
+<script type="text/javascript">
+
+var ranNum = Math.floor((Math.random() * 100)+1);
+
+
+document.getElementById("d").onclick = function(){
+
+if(ranNum >80){
+       if(ranNum%2 == 0)
+          alert("This number is in between 80-100 and also this is a Even number");
+  else if(ranNum%2 == 1)
+          alert("This number is in between 80-100 and also this is a Odd number");  
+}
+else if(ranNum >60){
+       if(ranNum%2 == 0)
+          alert("This number is in between 60-80 and also this is a Even number");
+  else if(ranNum%2 == 1)
+          alert("This number is in between 60-80 and also this is a Odd number");  
+}
+else if(ranNum >40){
+       if(ranNum%2 == 0)
+          alert("This number is in between 40-60 and also this is a Even number");
+  else if(ranNum%2 == 1)
+          alert("This number is in between 40-60 and also this is a Odd number");  
+}
+else if(ranNum >20){
+       if(ranNum%2 == 0)
+          alert("This number is in between 20-40 and also this is a Even number");
+  else if(ranNum%2 == 1)
+          alert("This number is in between 20-40 and also this is a Odd number");  
+}
+else if(ranNum >0){
+       if(ranNum%2 == 0)
+          alert("This number is in between 0-20 and also this is a Even number");
+  else if(ranNum%2 == 1)
+          alert("This number is in between 0-20 and also this is a Odd number");  
+}
+
+}
+var count = 0;
+var mark = 0;
+  
+document.getElementById("c").onclick = function(){
+      count++;
+	
+	if(count > 5){
+         document.getElementById("b2").innerHTML = "STOP";
+         document.getElementById("b1").innerHTML = "I am thinking "+ranNum;		 
+}
+	  
+else if(document.getElementById("b2").innerHTML == "WIN" || document.getElementById("b2").innerHTML == "already win"){
+         document.getElementById("b2").innerHTML = "already win";
+		 document.getElementById("b1").innerHTML = "I am thinking "+ranNum;	
+}	  
+
+else if(document.getElementById("a").value == ranNum){
+         document.getElementById("b2").style.backgroundColor = "#04CF17";
+		 document.getElementById("b2").style.color = "white";
+		 document.getElementById("b2").innerHTML = "WIN";
+         document.getElementById("b1").innerHTML = "I am thinking "+ranNum;	      	 
+}
+else{
+         document.getElementById("b2").style.backgroundColor = "#C8061D";
+		 document.getElementById("b2").style.color = "white";
+		 document.getElementById("b2").innerHTML = "FAIL"; 	
+       	 
+	 }
+	 
+if(document.getElementById("b2").innerHTML == "WIN" || document.getElementById("b2").innerHTML == "already win")
+               document.getElementById("a").style.backgroundColor = "#04CF17";		 
+
+else if(count == 1 && document.getElementById("b2").innerHTML == "FAIL")
+	           document.getElementById("a").style.backgroundColor = "#F4F705";
+
+else if(count == 2 && document.getElementById("b2").innerHTML == "FAIL")
+               document.getElementById("a").style.backgroundColor = "#B7BA0A";
+
+else if(count == 3 && document.getElementById("b2").innerHTML == "FAIL")
+               document.getElementById("a").style.backgroundColor = "orange";
+
+else if(count == 4 && document.getElementById("b2").innerHTML == "FAIL")
+               document.getElementById("a").style.backgroundColor = "#FA514C";
+
+else if(count == 5 && document.getElementById("b2").innerHTML == "FAIL")
+               document.getElementById("a").style.backgroundColor = " #FB0C04";		   
+else
+   document.getElementById("a").style.backgroundColor = "#C8061D";	 			   
+
+	 
+if(count == 1 && document.getElementById("b2").innerHTML == "WIN")
+          mark = 100;
+else if(count == 2 && document.getElementById("b2").innerHTML == "WIN")
+          mark = 90;		  	 
+else if(count == 3 && document.getElementById("b2").innerHTML == "WIN")
+          mark = 70;        
+else if(count == 4 && document.getElementById("b2").innerHTML == "WIN")
+          mark = 60;		 
+else if(count == 5 && document.getElementById("b2").innerHTML == "WIN")
+          mark = 30;
+else 
+     mark = 0;
+
+if(count == 5 || document.getElementById("b2").innerHTML == "WIN")	 
+        document.getElementById("b3").innerHTML = mark;	
+
+	if( mark > localStorage.getItem('marks') ){
+
+localStorage.removeItem('marks');
+localStorage.setItem('marks', mark);
+}	
+	
+}
+
+document.getElementById("e").onclick = function(){
+       
+	   var m = localStorage.getItem('marks');
+	   document.getElementById("f").innerHTML = "best mark is : "+m;	
+	   
+	   
+ 
+     
+
+}
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+</script>
+
+</body>
+
+</html>
